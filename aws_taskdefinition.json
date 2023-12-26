@@ -1,0 +1,1637 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:eu-central-1:985487075872:task-definition/docker-jitsi-meet:1",
+    "containerDefinitions": [
+        {
+            "name": "web",
+            "image": "jitsi/web:unstable",
+            "cpu": 0,
+            "memory": 512,
+            "links": [],
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 8000,
+                    "protocol": "tcp"
+                },
+                {
+                    "containerPort": 443,
+                    "hostPort": 8443,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "entryPoint": [],
+            "command": [],
+            "environment": [
+                {
+                    "name": "ENABLE_PREJOIN_PAGE",
+                    "value": ""
+                },
+                {
+                    "name": "COLIBRI_WEBSOCKET_JVB_LOOKUP_NAME",
+                    "value": ""
+                },
+                {
+                    "name": "CONFCODE_URL",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_XMPP_WEBSOCKET",
+                    "value": ""
+                },
+                {
+                    "name": "HIDE_PREJOIN_EXTRA_BUTTONS",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_AUTH",
+                    "value": ""
+                },
+                {
+                    "name": "INVITE_SERVICE_URL",
+                    "value": ""
+                },
+                {
+                    "name": "VIDEOQUALITY_BITRATE_VP8_LOW",
+                    "value": ""
+                },
+                {
+                    "name": "DISABLE_KICKOUT",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_STATS_ID",
+                    "value": ""
+                },
+                {
+                    "name": "START_AUDIO_ONLY",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_GUESTS",
+                    "value": ""
+                },
+                {
+                    "name": "DESKTOP_SHARING_FRAMERATE_MIN",
+                    "value": ""
+                },
+                {
+                    "name": "DEFAULT_LANGUAGE",
+                    "value": ""
+                },
+                {
+                    "name": "CHROME_EXTENSION_BANNER_JSON",
+                    "value": ""
+                },
+                {
+                    "name": "CONFIG_EXTERNAL_CONNECT",
+                    "value": ""
+                },
+                {
+                    "name": "NGINX_RESOLVER",
+                    "value": ""
+                },
+                {
+                    "name": "COLIBRI_WEBSOCKET_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "TOKEN_AUTH_URL",
+                    "value": ""
+                },
+                {
+                    "name": "ANALYTICS_WHITELISTED_EVENTS",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_RECORDING",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_P2P",
+                    "value": ""
+                },
+                {
+                    "name": "START_VIDEO_MUTED",
+                    "value": ""
+                },
+                {
+                    "name": "VIDEOQUALITY_BITRATE_AV1_LOW",
+                    "value": ""
+                },
+                {
+                    "name": "RESOLUTION",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_JAAS_COMPONENTS",
+                    "value": ""
+                },
+                {
+                    "name": "DISABLE_PROFILE",
+                    "value": ""
+                },
+                {
+                    "name": "DISABLE_REACTIONS",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_TCC",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_LIVESTREAMING_VALIDATOR_REGEXP_STRING",
+                    "value": ""
+                },
+                {
+                    "name": "START_WITH_VIDEO_MUTED",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_AUTH_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "HIDE_PREJOIN_DISPLAY_NAME",
+                    "value": ""
+                },
+                {
+                    "name": "DYNAMIC_BRANDING_URL",
+                    "value": ""
+                },
+                {
+                    "name": "DESKTOP_SHARING_FRAMERATE_MAX",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_LETSENCRYPT",
+                    "value": ""
+                },
+                {
+                    "name": "VIDEOQUALITY_BITRATE_H264_STANDARD",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_LIVESTREAMING_HELP_LINK",
+                    "value": ""
+                },
+                {
+                    "name": "START_BITRATE",
+                    "value": ""
+                },
+                {
+                    "name": "NGINX_WORKER_CONNECTIONS",
+                    "value": ""
+                },
+                {
+                    "name": "MATOMO_ENDPOINT",
+                    "value": ""
+                },
+                {
+                    "name": "DIALOUT_AUTH_URL",
+                    "value": ""
+                },
+                {
+                    "name": "DISABLE_POLLS",
+                    "value": ""
+                },
+                {
+                    "name": "DIALOUT_CODES_URL",
+                    "value": ""
+                },
+                {
+                    "name": "MATOMO_SITE_ID",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_PREFER_SCTP",
+                    "value": ""
+                },
+                {
+                    "name": "P2P_PREFERRED_CODEC",
+                    "value": ""
+                },
+                {
+                    "name": "COLIBRI_WEBSOCKET_REGEX",
+                    "value": ""
+                },
+                {
+                    "name": "DEPLOYMENTINFO_ENVIRONMENT_TYPE",
+                    "value": ""
+                },
+                {
+                    "name": "CALLSTATS_CUSTOM_SCRIPT_URL",
+                    "value": ""
+                },
+                {
+                    "name": "VIDEOQUALITY_BITRATE_VP8_STANDARD",
+                    "value": ""
+                },
+                {
+                    "name": "DISABLE_REMOTE_VIDEO_MENU",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_CLOSE_PAGE",
+                    "value": ""
+                },
+                {
+                    "name": "PEOPLE_SEARCH_URL",
+                    "value": ""
+                },
+                {
+                    "name": "DISABLE_DEEP_LINKING",
+                    "value": ""
+                },
+                {
+                    "name": "VIDEOQUALITY_BITRATE_H264_LOW",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_OCTO",
+                    "value": ""
+                },
+                {
+                    "name": "TESTING_OCTO_PROBABILITY",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_LOCAL_RECORDING_SELF_START",
+                    "value": ""
+                },
+                {
+                    "name": "DISABLE_PRIVATE_CHAT",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_TALK_WHILE_MUTED",
+                    "value": ""
+                },
+                {
+                    "name": "ETHERPAD_PUBLIC_URL",
+                    "value": ""
+                },
+                {
+                    "name": "DROPBOX_APPKEY",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_LIVESTREAMING_DATA_PRIVACY_LINK",
+                    "value": ""
+                },
+                {
+                    "name": "AUTO_CAPTION_ON_RECORD",
+                    "value": ""
+                },
+                {
+                    "name": "E2EPING_NUM_REQUESTS",
+                    "value": ""
+                },
+                {
+                    "name": "LETSENCRYPT_EMAIL",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_STEREO",
+                    "value": ""
+                },
+                {
+                    "name": "GOOGLE_ANALYTICS_ID",
+                    "value": ""
+                },
+                {
+                    "name": "E2EPING_MAX_MESSAGE_PER_SECOND",
+                    "value": ""
+                },
+                {
+                    "name": "RESOLUTION_WIDTH",
+                    "value": ""
+                },
+                {
+                    "name": "DISABLE_COLIBRI_WEBSOCKET_JVB_LOOKUP",
+                    "value": ""
+                },
+                {
+                    "name": "LETSENCRYPT_USE_STAGING",
+                    "value": ""
+                },
+                {
+                    "name": "DEPLOYMENTINFO_ENVIRONMENT",
+                    "value": ""
+                },
+                {
+                    "name": "GOOGLE_API_APP_CLIENT_ID",
+                    "value": ""
+                },
+                {
+                    "name": "VIDEOQUALITY_BITRATE_AV1_HIGH",
+                    "value": ""
+                },
+                {
+                    "name": "TZ",
+                    "value": "UTC"
+                },
+                {
+                    "name": "ENABLE_SUBDOMAINS",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_AUTH_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_LIVESTREAMING",
+                    "value": ""
+                },
+                {
+                    "name": "PREFERRED_LANGUAGE",
+                    "value": ""
+                },
+                {
+                    "name": "CALLSTATS_SECRET",
+                    "value": ""
+                },
+                {
+                    "name": "VIDEOQUALITY_ENFORCE_PREFERRED_CODEC",
+                    "value": ""
+                },
+                {
+                    "name": "DISABLE_HTTPS",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_WELCOME_PAGE",
+                    "value": ""
+                },
+                {
+                    "name": "TESTING_CAP_SCREENSHARE_BITRATE",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_CALENDAR",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_LOCAL_RECORDING_NOTIFY_ALL_PARTICIPANT",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_MUC_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "TOOLBAR_BUTTONS",
+                    "value": ""
+                },
+                {
+                    "name": "VIDEOQUALITY_BITRATE_VP9_LOW",
+                    "value": ""
+                },
+                {
+                    "name": "TRANSLATION_LANGUAGES",
+                    "value": ""
+                },
+                {
+                    "name": "VIDEOQUALITY_BITRATE_VP9_HIGH",
+                    "value": ""
+                },
+                {
+                    "name": "VIDEOQUALITY_BITRATE_H264_HIGH",
+                    "value": ""
+                },
+                {
+                    "name": "AMPLITUDE_ID",
+                    "value": ""
+                },
+                {
+                    "name": "START_SILENT",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_IPV6",
+                    "value": ""
+                },
+                {
+                    "name": "E2EPING_MAX_CONFERENCE_SIZE",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_BREAKOUT_ROOMS",
+                    "value": ""
+                },
+                {
+                    "name": "WHITEBOARD_COLLAB_SERVER_PUBLIC_URL",
+                    "value": ""
+                },
+                {
+                    "name": "VIDEOQUALITY_BITRATE_VP8_HIGH",
+                    "value": ""
+                },
+                {
+                    "name": "ANALYTICS_SCRIPT_URLS",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_COLIBRI_WEBSOCKET",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_SERVICE_RECORDING",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_REMB",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_NO_AUDIO_DETECTION",
+                    "value": ""
+                },
+                {
+                    "name": "VIDEOQUALITY_BITRATE_VP9_STANDARD",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_GUEST_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_OPUS_RED",
+                    "value": ""
+                },
+                {
+                    "name": "NGINX_WORKER_PROCESSES",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_TRANSCRIPTIONS",
+                    "value": ""
+                },
+                {
+                    "name": "WHITEBOARD_ENABLED",
+                    "value": ""
+                },
+                {
+                    "name": "DISABLE_GRANT_MODERATOR",
+                    "value": ""
+                },
+                {
+                    "name": "DEPLOYMENTINFO_REGION",
+                    "value": ""
+                },
+                {
+                    "name": "RESOLUTION_MIN",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_NOISY_MIC_DETECTION",
+                    "value": ""
+                },
+                {
+                    "name": "MICROSOFT_API_APP_CLIENT_ID",
+                    "value": ""
+                },
+                {
+                    "name": "TRANSLATION_LANGUAGES_HEAD",
+                    "value": ""
+                },
+                {
+                    "name": "CALLSTATS_ID",
+                    "value": ""
+                },
+                {
+                    "name": "DROPBOX_REDIRECT_URI",
+                    "value": ""
+                },
+                {
+                    "name": "START_WITH_AUDIO_MUTED",
+                    "value": ""
+                },
+                {
+                    "name": "DEPLOYMENTINFO_SHARD",
+                    "value": ""
+                },
+                {
+                    "name": "ETHERPAD_URL_BASE",
+                    "value": ""
+                },
+                {
+                    "name": "DISABLE_START_FOR_ALL",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_LIPSYNC",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_HSTS",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "RESOLUTION_WIDTH_MIN",
+                    "value": ""
+                },
+                {
+                    "name": "HIDE_PREMEETING_BUTTONS",
+                    "value": ""
+                },
+                {
+                    "name": "AUDIO_QUALITY_OPUS_BITRATE",
+                    "value": ""
+                },
+                {
+                    "name": "DISABLE_AUDIO_LEVELS",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_LIVESTREAMING_TERMS_LINK",
+                    "value": ""
+                },
+                {
+                    "name": "DEPLOYMENTINFO_USERREGION",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_E2EPING",
+                    "value": ""
+                },
+                {
+                    "name": "BRANDING_DATA_URL",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_FILE_RECORDING_SHARING",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_HTTP_REDIRECT",
+                    "value": ""
+                },
+                {
+                    "name": "DIALIN_NUMBERS_URL",
+                    "value": ""
+                },
+                {
+                    "name": "USE_APP_LANGUAGE",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_COLIBRI_WEBSOCKET_UNSAFE_REGEX",
+                    "value": ""
+                },
+                {
+                    "name": "DISABLE_LOCAL_RECORDING",
+                    "value": ""
+                },
+                {
+                    "name": "VIDEOQUALITY_PREFERRED_CODEC",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_AUDIO_PROCESSING",
+                    "value": ""
+                },
+                {
+                    "name": "VIDEOQUALITY_BITRATE_AV1_STANDARD",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_SIMULCAST",
+                    "value": ""
+                },
+                {
+                    "name": "PUBLIC_URL",
+                    "value": ""
+                },
+                {
+                    "name": "LETSENCRYPT_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "START_AUDIO_MUTED",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_REQUIRE_DISPLAY_NAME",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_RECORDER_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_BOSH_URL_BASE",
+                    "value": ""
+                }
+            ],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "linuxParameters": {
+                "capabilities": {},
+                "devices": []
+            },
+            "privileged": false,
+            "readonlyRootFilesystem": false,
+            "dnsServers": [],
+            "dnsSearchDomains": [],
+            "extraHosts": [],
+            "dockerSecurityOptions": [],
+            "pseudoTerminal": false
+        },
+        {
+            "name": "prosody",
+            "image": "jitsi/prosody:unstable",
+            "cpu": 0,
+            "memory": 1024,
+            "links": [],
+            "portMappings": [],
+            "essential": true,
+            "entryPoint": [],
+            "command": [],
+            "environment": [
+                {
+                    "name": "ENABLE_XMPP_WEBSOCKET",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_AUTH",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_MUC_CONFIGURATION",
+                    "value": ""
+                },
+                {
+                    "name": "LDAP_AUTH_METHOD",
+                    "value": ""
+                },
+                {
+                    "name": "JWT_ACCEPTED_AUDIENCES",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_GUESTS",
+                    "value": ""
+                },
+                {
+                    "name": "GC_INC_TH",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_ENABLE_RATE_LIMITS",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_SERVER_S2S_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "LDAP_TLS_CIPHERS",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_RATE_LIMIT_TIMEOUT",
+                    "value": ""
+                },
+                {
+                    "name": "STUN_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "LDAP_BASE",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_AV_MODERATION",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_RECORDING",
+                    "value": ""
+                },
+                {
+                    "name": "LDAP_FILTER",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_AUTH_PASSWORD",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_JAAS_COMPONENTS",
+                    "value": ""
+                },
+                {
+                    "name": "MAX_PARTICIPANTS",
+                    "value": ""
+                },
+                {
+                    "name": "GC_TYPE",
+                    "value": ""
+                },
+                {
+                    "name": "GC_GEN_MAX_TH",
+                    "value": ""
+                },
+                {
+                    "name": "JIBRI_RECORDER_USER",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_AUTH_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "VISITORS_XMPP_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_LOG_CONFIG",
+                    "value": ""
+                },
+                {
+                    "name": "JWT_ACCEPTED_ISSUERS",
+                    "value": ""
+                },
+                {
+                    "name": "VISITORS_XMPP_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "TURN_CREDENTIALS",
+                    "value": ""
+                },
+                {
+                    "name": "TURN_TRANSPORT",
+                    "value": ""
+                },
+                {
+                    "name": "LDAP_BINDDN",
+                    "value": ""
+                },
+                {
+                    "name": "LDAP_TLS_CACERT_FILE",
+                    "value": ""
+                },
+                {
+                    "name": "LDAP_TLS_CACERT_DIR",
+                    "value": ""
+                },
+                {
+                    "name": "TURN_HOST",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_S2S_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "LDAP_USE_TLS",
+                    "value": ""
+                },
+                {
+                    "name": "DISABLE_POLLS",
+                    "value": ""
+                },
+                {
+                    "name": "GLOBAL_CONFIG",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_GUEST_AUTH_TYPE",
+                    "value": ""
+                },
+                {
+                    "name": "JWT_ALLOW_EMPTY",
+                    "value": ""
+                },
+                {
+                    "name": "GC_INC_SPEED",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_TRUSTED_PROXIES",
+                    "value": ""
+                },
+                {
+                    "name": "GLOBAL_MODULES",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_MODULES",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_CONFIGURATION",
+                    "value": ""
+                },
+                {
+                    "name": "TURN_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "JIBRI_XMPP_PASSWORD",
+                    "value": ""
+                },
+                {
+                    "name": "JWT_APP_SECRET",
+                    "value": ""
+                },
+                {
+                    "name": "LDAP_START_TLS",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_INTERNAL_MUC_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_LOBBY_MUC_MODULES",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_S2S_LIMIT",
+                    "value": ""
+                },
+                {
+                    "name": "TZ",
+                    "value": "UTC"
+                },
+                {
+                    "name": "JIGASI_XMPP_PASSWORD",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_VISITORS_MUC_PREFIX",
+                    "value": ""
+                },
+                {
+                    "name": "JWT_ENABLE_DOMAIN_VERIFICATION",
+                    "value": ""
+                },
+                {
+                    "name": "JWT_TOKEN_AUTH_MODULE",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_RATE_LIMIT_CACHE_SIZE",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_COMPONENT_SECRET",
+                    "value": ""
+                },
+                {
+                    "name": "MATRIX_UVS_ISSUER",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_MUC_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "MATRIX_UVS_URL",
+                    "value": ""
+                },
+                {
+                    "name": "JIBRI_XMPP_USER",
+                    "value": ""
+                },
+                {
+                    "name": "LOG_LEVEL",
+                    "value": ""
+                },
+                {
+                    "name": "AUTH_TYPE",
+                    "value": ""
+                },
+                {
+                    "name": "JWT_AUTH_TYPE",
+                    "value": ""
+                },
+                {
+                    "name": "JIBRI_RECORDER_PASSWORD",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_RATE_LIMIT_SESSION_RATE",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_IPV6",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_C2S_REQUIRE_ENCRYPTION",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_BREAKOUT_ROOMS",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_INTERNAL_MUC_MODULES",
+                    "value": ""
+                },
+                {
+                    "name": "TURNS_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_RATE_LIMIT_LOGIN_RATE",
+                    "value": ""
+                },
+                {
+                    "name": "LDAP_TLS_CHECK_PEER",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_HTTP_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_GUEST_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_C2S_LIMIT",
+                    "value": ""
+                },
+                {
+                    "name": "VISITORS_XMPP_SERVER",
+                    "value": ""
+                },
+                {
+                    "name": "LDAP_BINDPW",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_END_CONFERENCE",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_BREAKOUT_MUC_MODULES",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_ENABLE_S2S",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_MODE",
+                    "value": ""
+                },
+                {
+                    "name": "TURNS_HOST",
+                    "value": ""
+                },
+                {
+                    "name": "LDAP_URL",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_AUTH_PASSWORD",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_AUTH_USER",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_LOBBY",
+                    "value": ""
+                },
+                {
+                    "name": "GC_GEN_MIN_TH",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_AUTH_TYPE",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_MUC_MODULES",
+                    "value": ""
+                },
+                {
+                    "name": "JWT_ASAP_KEYSERVER",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_RATE_LIMIT_ALLOW_RANGES",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "MATRIX_UVS_SYNC_POWER_LEVELS",
+                    "value": ""
+                },
+                {
+                    "name": "JIGASI_XMPP_USER",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_S2S",
+                    "value": ""
+                },
+                {
+                    "name": "MATRIX_UVS_AUTH_TOKEN",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_RESERVATION_REST_BASE_URL",
+                    "value": ""
+                },
+                {
+                    "name": "LDAP_VERSION",
+                    "value": ""
+                },
+                {
+                    "name": "STUN_HOST",
+                    "value": ""
+                },
+                {
+                    "name": "JWT_APP_ID",
+                    "value": ""
+                },
+                {
+                    "name": "PUBLIC_URL",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_ADMINS",
+                    "value": ""
+                },
+                {
+                    "name": "VISITORS_MAX_VISITORS_PER_NODE",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_VISITORS",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_RESERVATION_ENABLED",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_VISITOR_INDEX",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_RECORDER_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "GC_INC_STEP_SIZE",
+                    "value": ""
+                }
+            ],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "linuxParameters": {
+                "capabilities": {},
+                "devices": []
+            },
+            "privileged": false,
+            "readonlyRootFilesystem": false,
+            "dnsServers": [],
+            "dnsSearchDomains": [],
+            "extraHosts": [],
+            "dockerSecurityOptions": [],
+            "pseudoTerminal": false
+        },
+        {
+            "name": "jicofo",
+            "image": "jitsi/jicofo:unstable",
+            "cpu": 0,
+            "memory": 1024,
+            "links": [],
+            "portMappings": [
+                {
+                    "containerPort": 8888,
+                    "hostPort": 8888,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "entryPoint": [],
+            "command": [],
+            "environment": [
+                {
+                    "name": "XMPP_INTERNAL_MUC_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_CONF_SSRC_REWRITING",
+                    "value": ""
+                },
+                {
+                    "name": "BRIDGE_STRESS_THRESHOLD",
+                    "value": ""
+                },
+                {
+                    "name": "TZ",
+                    "value": "UTC"
+                },
+                {
+                    "name": "ENABLE_AUTH",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_JVB_XMPP_SERVER",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_BRIDGE_REGION_GROUPS",
+                    "value": ""
+                },
+                {
+                    "name": "JIGASI_SIP_URI",
+                    "value": ""
+                },
+                {
+                    "name": "VISITORS_MAX_PARTICIPANTS",
+                    "value": ""
+                },
+                {
+                    "name": "PROSODY_VISITORS_MUC_PREFIX",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_AUTO_OWNER",
+                    "value": ""
+                },
+                {
+                    "name": "SENTRY_RELEASE",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_MUC_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_XMPP_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_CODEC_AV1",
+                    "value": ""
+                },
+                {
+                    "name": "JIBRI_BREWERY_MUC",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_OCTO_REGION",
+                    "value": ""
+                },
+                {
+                    "name": "AUTH_TYPE",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_RECORDING",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_AUTH_PASSWORD",
+                    "value": ""
+                },
+                {
+                    "name": "MAX_BRIDGE_PARTICIPANTS",
+                    "value": ""
+                },
+                {
+                    "name": "JIBRI_REQUEST_RETRIES",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_CODEC_H264",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_ENABLE_HEALTH_CHECKS",
+                    "value": ""
+                },
+                {
+                    "name": "SENTRY_ENVIRONMENT",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_ENABLE_REST",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_CONF_MAX_VIDEO_SENDERS",
+                    "value": ""
+                },
+                {
+                    "name": "JIBRI_PENDING_TIMEOUT",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_CODEC_VP8",
+                    "value": ""
+                },
+                {
+                    "name": "VISITORS_XMPP_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_AUTH_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_CONF_INITIAL_PARTICIPANT_WAIT_TIMEOUT",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_CONF_SOURCE_SIGNALING_DELAYS",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_CODEC_VP9",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_BREWERY_MUC",
+                    "value": ""
+                },
+                {
+                    "name": "VISITORS_XMPP_SERVER",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_MULTI_STREAM_BACKWARD_COMPAT",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_MAX_MEMORY",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_CONF_STRIP_SIMULCAST",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_HEALTH_CHECKS_USE_PRESENCE",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_CONF_MAX_AUDIO_SENDERS",
+                    "value": ""
+                },
+                {
+                    "name": "SENTRY_DSN",
+                    "value": "\"0\""
+                },
+                {
+                    "name": "JVB_XMPP_SERVER",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_CONF_SINGLE_PARTICIPANT_TIMEOUT",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_OCTO",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_SCTP",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "BRIDGE_AVG_PARTICIPANT_STRESS",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_AUTH_LIFETIME",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_AUTH_TYPE",
+                    "value": ""
+                },
+                {
+                    "name": "JIGASI_BREWERY_MUC",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_ENABLE_BRIDGE_HEALTH_CHECKS",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_CODEC_OPUS_RED",
+                    "value": ""
+                },
+                {
+                    "name": "OCTO_BRIDGE_SELECTION_STRATEGY",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_XMPP_AUTH_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_XMPP_INTERNAL_MUC_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_SERVER",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_AUTO_LOGIN",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_VISITORS",
+                    "value": ""
+                },
+                {
+                    "name": "VISITORS_MAX_VISITORS_PER_NODE",
+                    "value": ""
+                },
+                {
+                    "name": "JICOFO_ENABLE_AUTH",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_RECORDER_DOMAIN",
+                    "value": ""
+                }
+            ],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "linuxParameters": {
+                "capabilities": {},
+                "devices": []
+            },
+            "privileged": false,
+            "readonlyRootFilesystem": false,
+            "dnsServers": [],
+            "dnsSearchDomains": [],
+            "extraHosts": [],
+            "dockerSecurityOptions": [],
+            "pseudoTerminal": false
+        },
+        {
+            "name": "jvb",
+            "image": "jitsi/jvb:unstable",
+            "cpu": 0,
+            "memory": 4096,
+            "links": [],
+            "portMappings": [
+                {
+                    "containerPort": 10000,
+                    "hostPort": 10000,
+                    "protocol": "udp"
+                },
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "entryPoint": [],
+            "command": [],
+            "environment": [
+                {
+                    "name": "JVB_WS_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_INTERNAL_MUC_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "AUTOSCALER_SIDECAR_SHUTDOWN_POLLING_INTERVAL",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "TZ",
+                    "value": "UTC"
+                },
+                {
+                    "name": "AUTOSCALER_SIDECAR_GROUP_NAME",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_JVB_XMPP_SERVER",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_AUTH_PASSWORD",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_AUTH_USER",
+                    "value": ""
+                },
+                {
+                    "name": "COLIBRI_REST_ENABLED",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_OCTO_RELAY_ID",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_INSTANCE_ID",
+                    "value": ""
+                },
+                {
+                    "name": "SHUTDOWN_REST_ENABLED",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_ADVERTISE_IPS",
+                    "value": ""
+                },
+                {
+                    "name": "AUTOSCALER_SIDECAR_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "SENTRY_RELEASE",
+                    "value": ""
+                },
+                {
+                    "name": "SENTRY_DSN",
+                    "value": "\"0\""
+                },
+                {
+                    "name": "JVB_XMPP_SERVER",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_XMPP_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_WS_SERVER_ID",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_PORT",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_OCTO",
+                    "value": ""
+                },
+                {
+                    "name": "AUTOSCALER_SIDECAR_HOST_ID",
+                    "value": ""
+                },
+                {
+                    "name": "VIDEOBRIDGE_MAX_MEMORY",
+                    "value": ""
+                },
+                {
+                    "name": "AUTOSCALER_SIDECAR_STATS_POLLING_INTERVAL",
+                    "value": ""
+                },
+                {
+                    "name": "AUTOSCALER_SIDECAR_INSTANCE_ID",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_OCTO_BIND_ADDRESS",
+                    "value": ""
+                },
+                {
+                    "name": "SENTRY_ENVIRONMENT",
+                    "value": ""
+                },
+                {
+                    "name": "AUTOSCALER_SIDECAR_KEY_FILE",
+                    "value": ""
+                },
+                {
+                    "name": "ENABLE_COLIBRI_WEBSOCKET",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_DISABLE_STUN",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_OCTO_REGION",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_XMPP_AUTH_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_XMPP_INTERNAL_MUC_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_AUTH_DOMAIN",
+                    "value": ""
+                },
+                {
+                    "name": "XMPP_SERVER",
+                    "value": ""
+                },
+                {
+                    "name": "PUBLIC_URL",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_BREWERY_MUC",
+                    "value": ""
+                },
+                {
+                    "name": "DOCKER_HOST_ADDRESS",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_ADVERTISE_PRIVATE_CANDIDATES",
+                    "value": ""
+                },
+                {
+                    "name": "AUTOSCALER_SIDECAR_REGION",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_MUC_NICKNAME",
+                    "value": ""
+                },
+                {
+                    "name": "AUTOSCALER_SIDECAR_KEY_ID",
+                    "value": ""
+                },
+                {
+                    "name": "JVB_STUN_SERVERS",
+                    "value": ""
+                }
+            ],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "linuxParameters": {
+                "capabilities": {},
+                "devices": []
+            },
+            "privileged": false,
+            "readonlyRootFilesystem": false,
+            "dnsServers": [],
+            "dnsSearchDomains": [],
+            "extraHosts": [],
+            "dockerSecurityOptions": [],
+            "pseudoTerminal": false
+        }
+    ],
+    "family": "docker-jitsi-meet",
+    "revision": 1,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EXTERNAL",
+        "EC2"
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "registeredAt": "2023-12-12T18:21:36.025Z",
+    "registeredBy": "arn:aws:iam::985487075872:user/jitsi-user",
+    "tags": []
+}
