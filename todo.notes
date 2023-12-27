@@ -1,0 +1,21 @@
+
+Setup:
+    [√] install AWS CLI
+    [√] setup AWS Credentials
+        [√] create access credentials
+        [√] $ aws configure
+    [√] terraform init
+    [√] terraform plan
+
+ECS Cluster via Terraform zum laufen zu bringen:
+    - IAM User
+    - ECS Cluster
+    - ECS Service / Task Definition
+    - IAM Role
+    - TODO: VPC?
+        see https://github.com/engelju/terraform-test/blob/main/main.tf
+
+- Ansonsten via CloudFormation
+    https://aws.amazon.com/blogs/opensource/getting-started-with-jitsi-an-open-source-web-conferencing-solution/
+    https://eu-central-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1
+    cloudformation.json zu tf converten: siehe https://github.com/DontShaveTheYak/cf2tf
