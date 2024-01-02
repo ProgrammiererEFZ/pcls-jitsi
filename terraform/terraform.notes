@@ -19,3 +19,9 @@ ECS Cluster via Terraform zum laufen zu bringen:
     https://aws.amazon.com/blogs/opensource/getting-started-with-jitsi-an-open-source-web-conferencing-solution/
     https://eu-central-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1
     cloudformation.json zu tf converten: siehe https://github.com/DontShaveTheYak/cf2tf
+
+The current problem seems to be that although the cluster gets created, the service is not running.
+The task definition is created, but no task is running.
+
+When trying to manually get the service to execute the task, the following error occurs
+    service jitsi-meet:1 was unable to place a task because no container instance met all of its requirements. Reason: No Container Instances were found in your cluster.

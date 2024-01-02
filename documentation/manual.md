@@ -51,28 +51,16 @@ To create an AWS IAM user with limited privileges and obtain an AWS_ACCESS_KEY_I
     - Click "Next" through the remaining steps, review the user details, and click "Create user".
     - After the user is created, you'll see a screen displaying the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY. Make sure to save these credentials securely as they won't be shown again.
 
-https://014997370819.signin.aws.amazon.com/console
-jitsi-user
-cz!P03]S
-
-access key
-AKIAQG7PJW7B5QDJAPMJ
-
-secret
-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
-
 ecs-cli configure profile \
     --profile-name pcls-jitsi \
-    --access-key AKIAQG7PJW7B5QDJAPMJ \
-    --secret-key bJemggQi+KCeYGq3yooOfqrBpDRDkg32BkbcJpF 
+    --access-key acceskey \
+    --secret-key secretkey 
 
----
-
-➜  docker-jitsi-meet git:(master) ✗ ecs-cli configure profile \
-    --profile-name pcls-jitsi \
-    --access-key AKIAQG7PJW7B5QDJAPMJ \
-    --secret-key bJemggQi+KCeYGq3yooOfqrBpDRDkg32BkbcJpF
-INFO[0000] Saved ECS CLI profile configuration pcls-jitsi.
+    ➜  docker-jitsi-meet git:(master) ✗ ecs-cli configure profile \
+        --profile-name pcls-jitsi \
+        --access-key acceskey \
+        --secret-key secretkey
+    INFO[0000] Saved ECS CLI profile configuration pcls-jitsi.
 
 3. 
 
@@ -82,12 +70,12 @@ $ ecs-cli configure \
     --region eu-central-1 \
     --config-name jitsi-central
 
-➜  docker-jitsi-meet git:(master) ✗ ecs-cli configure \
-    --cluster jitsi-central \
-    --default-launch-type EC2 \
-    --region eu-central-1 \
-    --config-name jitsi-central
-INFO[0000] Saved ECS CLI cluster configuration jitsi-central.
+    ➜  docker-jitsi-meet git:(master) ✗ ecs-cli configure \
+        --cluster jitsi-central \
+        --default-launch-type EC2 \
+        --region eu-central-1 \
+        --config-name jitsi-central
+    INFO[0000] Saved ECS CLI cluster configuration jitsi-central.
 
 $ ecs-cli up \
     --keypair jitsi-central \
