@@ -715,7 +715,7 @@
                 },
                 {
                     "name": "JICOFO_AUTH_PASSWORD",
-                    "value": ""
+                    "value": "52c86a1aa6fef115f31e783e186b88eb"
                 },
                 {
                     "name": "ENABLE_JAAS_COMPONENTS",
@@ -831,7 +831,7 @@
                 },
                 {
                     "name": "JIBRI_XMPP_PASSWORD",
-                    "value": ""
+                    "value": "133b3c088e88259aaf495496ad999b47"
                 },
                 {
                     "name": "JWT_APP_SECRET",
@@ -859,7 +859,7 @@
                 },
                 {
                     "name": "JIGASI_XMPP_PASSWORD",
-                    "value": ""
+                    "value": "a8bd3423b31c5c25734c837f1ca01bb3"
                 },
                 {
                     "name": "PROSODY_VISITORS_MUC_PREFIX",
@@ -911,7 +911,7 @@
                 },
                 {
                     "name": "JIBRI_RECORDER_PASSWORD",
-                    "value": ""
+                    "value": "7c84bd6803848f84370be696538a8f76"
                 },
                 {
                     "name": "PROSODY_RATE_LIMIT_SESSION_RATE",
@@ -991,7 +991,7 @@
                 },
                 {
                     "name": "JVB_AUTH_PASSWORD",
-                    "value": ""
+                    "value": "f62b875171afc9419ae805661fcd8566"
                 },
                 {
                     "name": "JVB_AUTH_USER",
@@ -1198,7 +1198,7 @@
                 },
                 {
                     "name": "JICOFO_AUTH_PASSWORD",
-                    "value": ""
+                    "value": "52c86a1aa6fef115f31e783e186b88eb"
                 },
                 {
                     "name": "MAX_BRIDGE_PARTICIPANTS",
@@ -1434,7 +1434,7 @@
                 },
                 {
                     "name": "JVB_AUTH_PASSWORD",
-                    "value": ""
+                    "value": "f62b875171afc9419ae805661fcd8566"
                 },
                 {
                     "name": "JVB_AUTH_USER",

@@ -3,13 +3,19 @@ set -e
 
 CLUSTER_NAME=jitsi-cluster
 LAUNCH_TYPE=EC2
+DEFAULT_REGION=eu-central-1
 PROFILE_NAME=jitsi
+KEY_PAIR_NAME=jitsi-cluster-key
+
+### load jitisi credentials
+
+AWS_ACCESS_KEY_ID=$(jq -r '.AccessKey.AccessKeyId' output/jitsi-user-credentials.json)
+AWS_SECRET_ACCESS_KEY=$(jq -r '.AccessKey.SecretAccessKey' output/jitsi-user-credentials.json)
+
+### setup ECS
 
 ecs-cli configure profile --profile-name "$PROFILE_NAME" --access-key "$AWS_ACCESS_KEY_ID" --secret-key "$AWS_SECRET_ACCESS_KEY"
-ecs-cli configure --cluster "$CLUSTER_NAME" --default-launch-type "$LAUNCH_TYPE" --region "$AWS_DEFAULT_REGION" --config-name "$PROFILE_NAME"
-
-KEY_PAIR_NAME=jitsi-cluster
-aws ec2 create-key-pair --key-name "$KEY_PAIR_NAME" --query 'KeyMaterial' --output text > cluster-key.pem
+ecs-cli configure --cluster "$CLUSTER_NAME" --default-launch-type "$LAUNCH_TYPE" --region "$DEFAULT_REGION" --config-name "$PROFILE_NAME"
 
 ecs-cli up \
     --keypair $KEY_PAIR_NAME  \
@@ -21,6 +27,22 @@ ecs-cli up \
     --cluster-config "$PROFILE_NAME" \
     --ecs-profile "$PROFILE_NAME"
 
-# ecs-cli compose --project-name tutorial  --file docker-compose.yml --debug service up 
-aws ecs register-task-definition --cli-input-json file://docker-jitsi-meet-taskdefinition.json
-aws ecs run-task --cluster "$CLUSTER_NAME" --task-definition docker-jitsi-meet:1 --count 1
+# the main problem was that the task definition was missing passwords
+
+aws ecs register-task-definition --cli-input-json file://resources/taskdefinition.json
+# FIXME: to get the task definition, run: aws ecs list-task-definitions
+aws ecs run-task --cluster "$CLUSTER_NAME" --task-definition "arn:aws:ecs:eu-central-1:985487075872:task-definition/docker-jitsi-meet-test123:1" --count 1
+
+
+## still TODO: somehow the networking does not work
+#We will now update the networking. From this screen, click on the Create New Revision again. Scroll down to the area Container Definitions again. Click on JVB.
+#Scroll down to the Network Settings and in the box called Links enter prosody:xmpp.meet.jitsi and then click on Update.
+# Repeat this for the Jifoco and Web containers.
+# Select the Prosody container, and scroll down to the Network settings, and this time enter xmpp.meet.jitsi in the Hostname and then click on Update.
+# Scroll to the bottom of the screen and click on Create. You should get a green box that says you have created a new revision of the task.
+
+# things to do:
+# - certificates
+# - domain setup
+# - load balancing (rn it seems it only uses 1 instance instead of both) & autoscaling
+# - cleanup --> all the stuff should be somehow automatically torn down
