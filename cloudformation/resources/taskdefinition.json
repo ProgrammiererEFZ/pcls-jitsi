@@ -1,5 +1,5 @@
 {
-    "family": "docker-jitsi-meet",
+    "family": "docker-jitsi-meet-test123",
     "containerDefinitions": [
         {
             "name": "web",

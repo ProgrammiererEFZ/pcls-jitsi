@@ -1,21 +1,12 @@
-# THIS IS A BIG TODO
+#!/bin/bash
+set -e
 
-aws cloudformation create-stack \
-    --stack-name my-iam-policy-stack \
-    --template-body file://iam-policy-template.yaml \
-    --parameters ParameterKey=PolicyName,ParameterValue=my-iam-policy
+# this will create the jitsi policy and user
 
-# Wait for the IAM policy stack to be created
-aws cloudformation wait stack-create-complete \
-    --stack-name my-iam-policy-stack
+aws iam create-policy --policy-name jitsi-policy --policy-document file://resources/policy.json
+aws iam create-user --user-name jitsi-user
 
-aws cloudformation create-stack \
-    --stack-name my-iam-user-stack \
-    --template-body file://iam-user-template.yaml \
-    --parameters ParameterKey=UserName,ParameterValue=my-iam-user \
-                             ParameterKey=PolicyStackName,ParameterValue=my-iam-policy-stack
+# maybe we have to run aws iam list-policies first to get the arn
+aws iam attach-user-policy --user-name jitsi-user --policy-arn arn:aws:iam::your-account-id:policy/jitsi-policy
 
-# Wait for the IAM user stack to be created
-aws cloudformation wait stack-create-complete \
-    --stack-name my-iam-user-stack
-
+aws iam create-access-key --user-name jitsi-user > output/jitsi-user-credentials.json
