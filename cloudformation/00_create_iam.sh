@@ -1,12 +1,17 @@
 #!/bin/bash
 set -e
 
-# this will create the jitsi policy and user
+# TODO: cleanup / add uninstalling
 
-aws iam create-policy --policy-name jitsi-policy --policy-document file://resources/policy.json
-aws iam create-user --user-name jitsi-user
+# this will create the jitsi policy and user and generate access keys as well an ec2 key pair
+POLICY_NAME=test-jitsi-policy2
+USER_NAME=test-jitsi-user2
+KEY_PAIR_NAME=jitsi-cluster-key
 
-# maybe we have to run aws iam list-policies first to get the arn
-aws iam attach-user-policy --user-name jitsi-user --policy-arn arn:aws:iam::your-account-id:policy/jitsi-policy
+aws iam create-policy --policy-name "$POLICY_NAME" --policy-document file://resources/policy.json > output/jitsi-policy.json
+aws iam create-user --user-name "$USER_NAME" > output/jitsi-user.json
 
-aws iam create-access-key --user-name jitsi-user > output/jitsi-user-credentials.json
+aws iam attach-user-policy --user-name "$USER_NAME" --policy-arn $(aws iam list-policies --query 'Policies[?PolicyName==`'"$POLICY_NAME"'`].Arn' --output text)
+
+aws iam create-access-key --user-name "$USER_NAME" > output/jitsi-user-credentials.json
+aws ec2 create-key-pair --key-name "$KEY_PAIR_NAME" --query 'KeyMaterial' --output text > output/jitsi-ec2-cluster-key.pem
