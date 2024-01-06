@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define variables
-vpc_name="jitsi-vpc-2"
+vpc_name="jitsi-vpc"
 security_group_name="jitsi-security-group"
 load_balancer_name="jitsi-lb"
 certificate_domain="meet.xn--rotzlffel-47a.ch"

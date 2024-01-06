@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define variables
-vpc_name="jitsi-vpc-2"
+vpc_name="jitsi-vpc"
 target_group_name_a="jitsi-target-a"
 target_group_name_b="jitsi-target-b"
 instance_name_a="jitsi-server-a"
