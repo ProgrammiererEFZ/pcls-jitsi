@@ -71,7 +71,7 @@ rule_actions=$(cat <<EOF
             "TargetGroups": [
                 {
                     "TargetGroupArn": "$target_group_a_arn",
-                    "Weight": 100
+                    "Weight": 999
                 },
                 {
                     "TargetGroupArn": "$target_group_b_arn",
@@ -86,7 +86,7 @@ EOF
 
 aws elbv2 create-rule \
   --listener-arn "$listener_arn" \
-  --conditions Field=path-pattern,Values='/*' \
+  --conditions Field=path-pattern,Values='*' \
   --priority 1 \
   --actions "$rule_actions" \
   --output text
