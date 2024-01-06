@@ -13,7 +13,7 @@ sudo apt-get install debconf-utils -y
 
 cat << EOF | debconf-set-selections
 jitsi-meet-web-config   jitsi-meet/jaas-choice  boolean false
-jitsi-meet-web-config   jitsi-meet/cert-choice  select  Let's Encrypt certificates
+jitsi-meet-web-config   jitsi-meet/cert-choice  select  I want to use my own certificate
 jitsi-videobridge2      jitsi-videobridge/jvb-hostname  string  meet.xn--rotzlffel-47a.ch
 EOF
 export DEBIAN_FRONTEND="noninteractive"
