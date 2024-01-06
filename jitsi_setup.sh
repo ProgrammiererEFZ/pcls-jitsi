@@ -14,7 +14,7 @@ sudo apt-get install debconf-utils -y
 cat << EOF | debconf-set-selections
 jitsi-meet-web-config   jitsi-meet/jaas-choice  boolean false
 jitsi-meet-web-config   jitsi-meet/cert-choice  select  Let's Encrypt certificates
-jitsi-videobridge2      jitsi-videobridge/jvb-hostname  string  xn--rotzlffel-47a.ch
+jitsi-videobridge2      jitsi-videobridge/jvb-hostname  string  meet.xn--rotzlffel-47a.ch
 EOF
 export DEBIAN_FRONTEND="noninteractive"
 apt install jitsi-meet -y
