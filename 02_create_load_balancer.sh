@@ -5,8 +5,7 @@ vpc_name="jitsi-vpc"
 security_group_name="jitsi-security-group"
 load_balancer_name="jitsi-lb"
 certificate_domain="meet.xn--rotzlffel-47a.ch"
-target_group_name_a="jitsi-target-a"
-target_group_name_b="jitsi-target-b"
+target_group_name="jitsi-target" # Assuming single target group name
 
 # Retrieve VPC ID
 vpc_id=$(aws ec2 describe-vpcs \
@@ -20,7 +19,7 @@ security_group_id=$(aws ec2 describe-security-groups \
   --query 'SecurityGroups[0].GroupId' \
   --output text)
 
-# Retrieve subnet IDs (replace with your actual subnet IDs)
+# Retrieve subnet IDs
 subnet_ids=$(aws ec2 describe-subnets \
   --filters "Name=vpc-id,Values=$vpc_id" \
   --query 'Subnets[*].SubnetId' \
@@ -31,14 +30,9 @@ certificate_arn=$(aws acm list-certificates \
   --query "CertificateSummaryList[?DomainName=='$certificate_domain'].CertificateArn" \
   --output text)
 
-# Retrieve Target Group ARNs
-target_group_a_arn=$(aws elbv2 describe-target-groups \
-  --names "$target_group_name_a" \
-  --query 'TargetGroups[0].TargetGroupArn' \
-  --output text)
-
-target_group_b_arn=$(aws elbv2 describe-target-groups \
-  --names "$target_group_name_b" \
+# Retrieve Target Group ARN
+target_group_arn=$(aws elbv2 describe-target-groups \
+  --names "$target_group_name" \
   --query 'TargetGroups[0].TargetGroupArn' \
   --output text)
 
@@ -52,45 +46,15 @@ load_balancer_arn=$(aws elbv2 create-load-balancer \
   --query 'LoadBalancers[0].LoadBalancerArn' \
   --output text)
 
-# Create HTTPS Listener
+# Create HTTPS Listener with a forward action to the target group
 listener_arn=$(aws elbv2 create-listener \
   --load-balancer-arn "$load_balancer_arn" \
   --protocol HTTPS \
   --port 443 \
   --certificates CertificateArn="$certificate_arn" \
-  --default-actions Type=fixed-response,FixedResponseConfig="{StatusCode=200,ContentType='text/plain',MessageBody='OK'}" \
+  --default-actions Type=forward,TargetGroupArn="$target_group_arn" \
   --query 'Listeners[0].ListenerArn' \
   --output text)
 
-# Create Rule for Weighted Target Groups
-rule_actions=$(cat <<EOF
-[
-    {
-        "Type": "forward",
-        "ForwardConfig": {
-            "TargetGroups": [
-                {
-                    "TargetGroupArn": "$target_group_a_arn",
-                    "Weight": 999
-                },
-                {
-                    "TargetGroupArn": "$target_group_b_arn",
-                    "Weight": 1
-                }
-            ]
-        }
-    }
-]
-EOF
-)
-
-aws elbv2 create-rule \
-  --listener-arn "$listener_arn" \
-  --conditions Field=path-pattern,Values='*' \
-  --priority 1 \
-  --actions "$rule_actions" \
-  --output text
-
-
-echo "ALB and weighted target groups have been configured."
+echo "Application Load Balancer with single target group has been configured. Create DNS CNAME:"
 aws elbv2 describe-load-balancers --load-balancer-arns "$load_balancer_arn" --query 'LoadBalancers[0].DNSName' --output text
