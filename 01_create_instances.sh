@@ -3,13 +3,12 @@
 # Define variables
 vpc_name="jitsi-vpc"
 vpc_cidr="10.0.0.0/16" # CIDR block for VPC
-instance_name_prefix=("jitsi-server-a" "jitsi-server-b")
 instance_type="t2.micro"
-ami="ami-0faab6bdbac9486fb"  # Ubuntu 20.04 LTS in eu-central-1
-key_name="jitsi-central-luca" # TODO use generated key
+ami="ami-0faab6bdbac9486fb"  # Ubuntu in eu-central-1
+key_name="jitsi-central-luca" # TODO use generated keys
 user_data_script="jitsi_setup.sh"
 security_group_name="jitsi-security-group"
-
+auto_scaling_group_name="jitsi-auto-scaling-group"
 # Function to create a security group within the VPC
 create_security_group() {
   local vpc_id="$1"
@@ -42,13 +41,14 @@ for rule in "${security_group_rules[@]}"; do
     --cidr 0.0.0.0/0
 done
 
-# Create subnets in different AZs
+# Create subnets in different AZs with auto-assign public IP enabled
 subnet_a_id=$(aws ec2 create-subnet \
   --availability-zone eu-central-1a \
   --vpc-id "$vpc_id" \
   --cidr-block "10.0.0.0/24" \
   --query 'Subnet.SubnetId' \
   --output text)
+aws ec2 modify-subnet-attribute --subnet-id "$subnet_a_id" --map-public-ip-on-launch
 
 subnet_b_id=$(aws ec2 create-subnet \
   --availability-zone eu-central-1b \
@@ -56,6 +56,7 @@ subnet_b_id=$(aws ec2 create-subnet \
   --cidr-block "10.0.1.0/24" \
   --query 'Subnet.SubnetId' \
   --output text)
+aws ec2 modify-subnet-attribute --subnet-id "$subnet_b_id" --map-public-ip-on-launch
 
 # Get the main route table associated with the VPC
 main_route_table_id=$(aws ec2 describe-route-tables \
@@ -68,77 +69,47 @@ aws ec2 create-route \
   --route-table-id "$main_route_table_id" \
   --destination-cidr-block 0.0.0.0/0 \
   --gateway-id "$igw_id"
-
-# Launch EC2 instances in different subnets with the correct security group
-for i in "${!instance_name_prefix[@]}"; do
-  instance_name="${instance_name_prefix[$i]}"
-  subnet_id=""
-
-  if [ $i -eq 0 ]; then
-    subnet_id="$subnet_a_id"
-  else
-    subnet_id="$subnet_b_id"
-  fi
-
-  # Launch EC2 instance
-  instance_id=$(aws ec2 run-instances \
-    --image-id "$ami" \
-    --instance-type "$instance_type" \
-    --subnet-id "$subnet_id" \
-    --key-name "$key_name" \
-    --security-group-ids "$security_group_id" \
-    --user-data file://"$user_data_script" \
-    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance_name}]" \
-    --associate-public-ip-address \
-    --query 'Instances[0].InstanceId' \
-    --output text)
-
-  echo "Launched EC2 instance $instance_name with Instance ID $instance_id in subnet $subnet_id."
-done
-
-echo "EC2 instances have been created in different subnets and AZs."
-
+  
 # Create target groups for the EC2 instances
-target_group_name_a="jitsi-target-a"
-target_group_name_b="jitsi-target-b"
+target_group_name="jitsi-target"
 
-# Create Target Group A
-target_group_a_id=$(aws elbv2 create-target-group \
-  --name "$target_group_name_a" \
+# Create Target Group
+target_group_id=$(aws elbv2 create-target-group \
+  --name "$target_group_name" \
   --protocol HTTPS \
   --port 443 \
   --vpc-id "$vpc_id" \
   --query 'TargetGroups[0].TargetGroupArn' \
   --output text)
 
-# Create Target Group B
-target_group_b_id=$(aws elbv2 create-target-group \
-  --name "$target_group_name_b" \
-  --protocol HTTPS \
-  --port 443 \
-  --vpc-id "$vpc_id" \
-  --query 'TargetGroups[0].TargetGroupArn' \
-  --output text)
 
-# Retrieve instance IDs
-instance_a_id=$(aws ec2 describe-instances \
-  --filters "Name=tag:Name,Values=${instance_name_prefix[0]}" "Name=instance-state-name,Values=running" \
-  --query 'Reservations[0].Instances[0].InstanceId' \
-  --output text)
+# Define Launch Template variables
+launch_template_name="jitsi-launch-template"
 
-instance_b_id=$(aws ec2 describe-instances \
-  --filters "Name=tag:Name,Values=${instance_name_prefix[1]}" "Name=instance-state-name,Values=running" \
-  --query 'Reservations[0].Instances[0].InstanceId' \
-  --output text)
+# Base64 encode the user data script without newlines
+user_data_base64=$(base64 -w 0 "$user_data_script")
 
-# Register instance A with Target Group A
-aws elbv2 register-targets \
-  --target-group-arn "$target_group_a_id" \
-  --targets Id="$instance_a_id"
 
-# Register instance B with Target Group B
-aws elbv2 register-targets \
-  --target-group-arn "$target_group_b_id" \
-  --targets Id="$instance_b_id"
+# Create Launch Template for Auto Scaling Group
+aws ec2 create-launch-template \
+  --launch-template-name "$launch_template_name" \
+  --version-description "Version1" \
+  --launch-template-data "{\"ImageId\":\"$ami\",\"InstanceType\":\"$instance_type\",\"KeyName\":\"$key_name\",\"UserData\":\"$user_data_base64\",\"NetworkInterfaces\":[{\"DeviceIndex\":0,\"AssociatePublicIpAddress\":true,\"Groups\":[\"$security_group_id\"]}]}"
+
+# Create Auto Scaling Group using Launch Template
+aws autoscaling create-auto-scaling-group \
+  --auto-scaling-group-name "$auto_scaling_group_name" \
+  --launch-template "LaunchTemplateName=$launch_template_name,Version=1" \
+  --min-size 1 \
+  --max-size 1 \
+  --desired-capacity 1 \
+  --vpc-zone-identifier "$subnet_a_id,$subnet_b_id" \
+  --health-check-type EC2 \
+  --health-check-grace-period 300 \
+  --target-group-arns "$target_group_id" \
+  --tags "Key=Name,Value=jitsi-server"
+
+echo "Auto Scaling Group has been configured."
+
 
 echo "Target groups and instances have been configured."
