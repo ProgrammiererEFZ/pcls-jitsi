@@ -9,6 +9,7 @@ key_name="jitsi-central-luca" # TODO use generated keys
 user_data_script="jitsi_setup.sh"
 security_group_name="jitsi-security-group"
 auto_scaling_group_name="jitsi-auto-scaling-group"
+
 # Function to create a security group within the VPC
 create_security_group() {
   local vpc_id="$1"
