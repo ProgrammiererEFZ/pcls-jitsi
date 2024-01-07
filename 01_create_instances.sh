@@ -105,11 +105,8 @@ aws autoscaling create-auto-scaling-group \
   --desired-capacity 1 \
   --vpc-zone-identifier "$subnet_a_id,$subnet_b_id" \
   --health-check-type EC2 \
-  --health-check-grace-period 300 \
+  --health-check-grace-period 200 \
   --target-group-arns "$target_group_id" \
   --tags "Key=Name,Value=jitsi-server"
 
 echo "Auto Scaling Group has been configured."
-
-
-echo "Target groups and instances have been configured."
