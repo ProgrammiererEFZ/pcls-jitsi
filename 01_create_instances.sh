@@ -9,6 +9,8 @@ key_name="jitsi-central-luca" # TODO use generated keys
 user_data_script="jitsi_setup.sh"
 security_group_name="jitsi-security-group"
 auto_scaling_group_name="jitsi-auto-scaling-group"
+launch_template_name="jitsi-launch-template"
+target_group_name="jitsi-target"
 
 # Function to create a security group within the VPC
 create_security_group() {
@@ -71,8 +73,6 @@ aws ec2 create-route \
   --destination-cidr-block 0.0.0.0/0 \
   --gateway-id "$igw_id"
   
-# Create target groups for the EC2 instances
-target_group_name="jitsi-target"
 
 # Create Target Group
 target_group_id=$(aws elbv2 create-target-group \
@@ -83,9 +83,6 @@ target_group_id=$(aws elbv2 create-target-group \
   --query 'TargetGroups[0].TargetGroupArn' \
   --output text)
 
-
-# Define Launch Template variables
-launch_template_name="jitsi-launch-template"
 
 # Base64 encode the user data script without newlines
 user_data_base64=$(base64 -w 0 "$user_data_script")

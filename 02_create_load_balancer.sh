@@ -5,7 +5,7 @@ vpc_name="jitsi-vpc"
 security_group_name="jitsi-security-group"
 load_balancer_name="jitsi-lb"
 certificate_domain="meet.xn--rotzlffel-47a.ch"
-target_group_name="jitsi-target" # Assuming single target group name
+target_group_name="jitsi-target" 
 
 # Retrieve VPC ID
 vpc_id=$(aws ec2 describe-vpcs \
