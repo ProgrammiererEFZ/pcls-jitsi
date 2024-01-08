@@ -2,6 +2,8 @@
 
 Durchgeführt von Julie Engel (engelju) und Luca Plozner (ProgrammiererEFZ).
 
+Der technische Bericht, welche den Use Case und das Vorgehen detailiert beschreibt, befindet sich [hier](https://github.com/ProgrammiererEFZ/pcls-jitsi/blob/main/Jitsi%20Videoconferencing%20on%20AWS.pdf).
+
 ## Use Case
 
 Jitsi Videoconferencing in AWS.
