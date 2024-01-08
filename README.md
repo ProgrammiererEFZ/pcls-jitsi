@@ -1,8 +1,10 @@
-# pcls
+# pcls Case Study
 
-# Use Case
+Case Study für das Modul "pcls" an der FHNW. Durchgeführt von Julie Engel (engelju) und Luca Plozner (ProgrammiererEFZ).
 
-Jitsi in der Cloud.
+## Use Case
+
+Jitsi Videoconferencing in AWS.
 
 ## Komponente
 
