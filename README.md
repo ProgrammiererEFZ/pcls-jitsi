@@ -23,9 +23,9 @@ Die Installation setzt voraus, dass folgende Tools installiert sind:
 
 Ebenfalls müssen vorgängig folgende Schritte ausgeführt werden:
 - Domain Name im File `resources/jitsi_setup.sh` anpassen
-- Manuelles erstellen, signieren und importieren (in ACM) des SSL-Zertifikates in ACM und anpassen des Domain Name im File `02_create_loadbalancer.sh`
+- Manuelles erstellen, signieren und importieren (in ACM) des SSL-Zertifikates in ACM und anpassen des Domainnamens im File `02_create_loadbalancer.sh`
 
-Anschliessend können die Skripte `00_create_iam.sh`, `01_create_instances.sh`, `'02_create_load_balancer.sh` sowie `03_create_monitoring.sh` nacheinadner ausgeführt werden. 
+Anschliessend können die Skripte `00_create_iam.sh`, `01_create_instances.sh`, `'02_create_load_balancer.sh` sowie `03_create_monitoring.sh` nacheinander ausgeführt werden. 
 
 Das Skript `00_create_iam.sh` erstellt den User und die Policy für die Installation und generiert ein EC2 Keypair (und speichert dies in ein neues Verzeichnis "/output") und das Skript `01_create_instances.sh` erstellt anschliessend das Setup für benötigten EC2-Instanzen und fährt sie hoch. Das Skript `02_create_load_balancer.sh` erstellt den Loadbalancer und das Skript `03_create_monitoring.sh` erstellt die Monitoring-Alarme.
 
