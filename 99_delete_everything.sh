@@ -59,31 +59,60 @@ echo "Target Group deleted."
 aws ec2 delete-launch-template --launch-template-name "$LAUNCH_TEMPLATE_NAME"
 echo "Launch Template deleted."
 
-# Delete VPC only after no more ec2 instances are running
-while [ "$(aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,State.Name]' --output text)" != "" ]
+# Delete VPC only after all EC2 instances are terminated
+while [ "$(aws ec2 describe-instances --filters "Name=vpc-id,Values=$vpc_id" "Name=instance-state-name,Values=terminated" --query 'Reservations[*].Instances[*].InstanceId' --output text)" != "" ]
 do
-  echo "waiting another 30 seconds for ec2 instances to shut down..."
+  # Wait for 30 seconds and check again if any instance is still not terminated
+  echo "Waiting for all instances to be terminated..."
   sleep 30
 done
 
-# Delete VPC
+# Retrieve VPC ID
 vpc_id=$(aws ec2 describe-vpcs --filters "Name=tag:Name,Values=$VPC_NAME" --query 'Vpcs[0].VpcId' --output text)
-aws ec2 delete-vpc --vpc-id "$vpc_id"
-echo "VPC deleted."
+
+# Delete Subnets
+for subnet_id in $(aws ec2 describe-subnets --filters "Name=vpc-id,Values=$vpc_id" --query 'Subnets[].SubnetId' --output text); do
+    aws ec2 delete-subnet --subnet-id "$subnet_id"
+    echo "Deleted subnet: $subnet_id"
+done
+
+# Detach and Delete Internet Gateway
+for igw_id in $(aws ec2 describe-internet-gateways --filters "Name=attachment.vpc-id,Values=$vpc_id" --query 'InternetGateways[].InternetGatewayId' --output text); do
+    aws ec2 detach-internet-gateway --internet-gateway-id "$igw_id" --vpc-id "$vpc_id"
+    aws ec2 delete-internet-gateway --internet-gateway-id "$igw_id"
+    echo "Detached and deleted internet gateway: $igw_id"
+done
+
+# Delete custom route tables associated with the VPC
+for rt_id in $(aws ec2 describe-route-tables --filters "Name=vpc-id,Values=$vpc_id" "Name=association.main,Values=false" --query 'RouteTables[].RouteTableId' --output text); do
+    aws ec2 delete-route-table --route-table-id "$rt_id"
+    echo "Deleted route table: $rt_id"
+done
 
 # Delete Security Group
-security_group_id=$(aws ec2 describe-security-groups --filters "Name=tag:Name,Values=$SECURITY_GROUP_NAME" --query 'SecurityGroups[0].GroupId' --output text)
+security_group_id=$(aws ec2 describe-security-groups --filters "Name=group-name,Values=$SECURITY_GROUP_NAME" "Name=vpc-id,Values=$vpc_id" --query 'SecurityGroups[0].GroupId' --output text)
 aws ec2 delete-security-group --group-id "$security_group_id"
 echo "Security Group deleted."
 
-echo "--- Auto-Scaling Group, Load Balancer, Target Group, Launch Template, VPC Setup and Security Group successfully deleted..."
 
-echo "--- Deleting IAM resources..."
+# Delete VPC
+aws ec2 delete-vpc --vpc-id "$vpc_id"
+echo "VPC deleted."
 
 
 # Delete IAM Policy
 policy_arn=$(aws iam list-policies --query 'Policies[?PolicyName==`'"$policy_name"'`].Arn' --output text)
+
+# Detach the policy from the user
 aws iam detach-user-policy --user-name "$user_name" --policy-arn "$policy_arn"
+
+# Delete all non-default versions of the policy
+policy_versions=$(aws iam list-policy-versions --policy-arn "$policy_arn" --query 'Versions[?IsDefaultVersion==`false`].VersionId' --output text)
+for version in $policy_versions; do
+    aws iam delete-policy-version --policy-arn "$policy_arn" --version-id "$version"
+done
+
+# Delete the policy
 aws iam delete-policy --policy-arn "$policy_arn"
 echo "IAM Policy deleted."
 
