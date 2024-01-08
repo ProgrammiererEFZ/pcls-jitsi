@@ -9,7 +9,10 @@
                 "elasticloadbalancing:*",
                 "autoscaling:*",
                 "sns:*",
-                "cloudwatch:*"
+                "cloudwatch:*",
+                "acm:ListCertificates",
+                "events:PutRule",
+                "events:PutTargets"
             ],
             "Resource": "*"
         }
