@@ -72,11 +72,5 @@ Abschliessend muss noch der DNS CNAME manuell beim Provider angepasst werden.
 - ✅ Verargumentieren der Entscheidung anhand der gelernten Prinzipien
 - ✅ Vorgehensweise für Umsetzung
 - ✅ Beschreibung der Implementation inklusive Configs
-- TODO: Erkenntnisse und Fazit
-
-### Die folgenden Punkte werden bewertet:
-- Gewählten Servicearchitektur betreffend Kosten, Skalierbarkeit und hohe Verfügbarkeit
-- Qualität der Implementierung
-- Qualität und Struktur des Berichtes
-- Es gibt ein Excel-Sheet mit einem Benotungsschema
+- ✅ Erkenntnisse und Fazit
 
