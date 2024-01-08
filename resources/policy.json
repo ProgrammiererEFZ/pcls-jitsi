@@ -12,7 +12,9 @@
                 "cloudwatch:*",
                 "acm:ListCertificates",
                 "events:PutRule",
-                "events:PutTargets"
+                "events:PutTargets",
+				"events:RemoveTargets",
+				"events:DeleteRule"
             ],
             "Resource": "*"
         }
