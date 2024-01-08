@@ -25,7 +25,7 @@ Die Installation setzt voraus, dass folgende Tools installiert sind:
 
 Ebenfalls müssen vorgängig folgende Schritte ausgeführt werden:
 - Domain Name im File `resources/jitsi_setup.sh` anpassen
-- Manuelles erstellen, signieren und importieren (in ACM) des SSL-Zertifikates in ACM und anpassen des Domainnamens im File `02_create_loadbalancer.sh`
+- Manuelles erstellen, signieren und importieren des SSL-Zertifikates in ACM und anpassen des Domainnamens im File `02_create_loadbalancer.sh`
 
 Anschliessend können die Skripte `00_create_iam.sh`, `01_create_instances.sh`, `'02_create_load_balancer.sh` sowie `03_create_monitoring.sh` nacheinander ausgeführt werden. 
 
