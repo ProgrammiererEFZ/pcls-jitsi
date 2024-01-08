@@ -9,6 +9,9 @@ LAUNCH_TEMPLATE_NAME="jitsi-launch-template"
 LOAD_BALANCER_NAME="jitsi-lb"
 MONITORING_TOPIC_NAME="EC2InstanceStateChangeNotification"
 MONITORING_RULE_NAME="EC2InstanceStateChangeRule"
+policy_name="jitsi-policy"
+user_name="jitsi-user"
+ec2_key_name="jitsi-ec2-key"
 
 echo "--- Deleting monitoring resources..."
 
@@ -77,10 +80,6 @@ echo "--- Auto-Scaling Group, Load Balancer, Target Group, Launch Template, VPC 
 
 echo "--- Deleting IAM resources..."
 
-# Define variables
-policy_name="jitsi-policy"
-user_name="jitsi-user"
-ec2_key_name="jitsi-ec2-key"
 
 # Delete IAM Policy
 policy_arn=$(aws iam list-policies --query 'Policies[?PolicyName==`'"$policy_name"'`].Arn' --output text)
