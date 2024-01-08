@@ -1,6 +1,6 @@
 # pcls Case Study
 
-Durchgeführt von Julie Engel (engelju) und Luca Plozner (ProgrammiererEFZ).
+Durchgeführt von Julie Engel ([engelju](https://github.com/engelju)) und Luca Plozner ([ProgrammiererEFZ](https://github.com/ProgrammiererEFZ)).
 
 Der technische Bericht, welche den Use Case und das Vorgehen detailiert beschreibt, befindet sich [hier](https://github.com/ProgrammiererEFZ/pcls-jitsi/blob/main/Jitsi%20Videoconferencing%20on%20AWS.pdf).
 
