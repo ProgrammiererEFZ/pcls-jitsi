@@ -1,6 +1,6 @@
 # pcls Case Study
 
-Case Study für das Modul "pcls" an der FHNW. Durchgeführt von Julie Engel (engelju) und Luca Plozner (ProgrammiererEFZ).
+Durchgeführt von Julie Engel (engelju) und Luca Plozner (ProgrammiererEFZ).
 
 ## Use Case
 
