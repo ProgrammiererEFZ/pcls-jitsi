@@ -17,10 +17,7 @@ echo "--- Deleting monitoring resources..."
 
 # Get SNS-Topic ARN
 topic_arn=$(aws sns list-topics --query "Topics[?ends_with(TopicArn,':$MONITORING_TOPIC_NAME')].TopicArn" --output text)
-if [ -z "$topic_arn" ]; then
-    echo "SNS-Topic not found."
-    exit 1
-fi
+
 
 # Remove SNS-Subscriptions for SNS Topic
 subscriptions=$(aws sns list-subscriptions-by-topic --topic-arn "$topic_arn" --query 'Subscriptions[].SubscriptionArn' --output text)

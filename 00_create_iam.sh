@@ -43,4 +43,4 @@ aws configure set aws_access_key_id "$(jq -r '.AccessKey.AccessKeyId' output/jit
 aws configure set aws_secret_access_key "$(jq -r '.AccessKey.SecretAccessKey' output/jitsi-user-credentials.json)"
 aws configure set default.region eu-central-1
 
-echo "IAM resources successfully created. Wait a few seconds before next script until key is ready"
+echo "IAM resources successfully created. Wait a few seconds before next script until user is ready"
