@@ -4,8 +4,15 @@
 POLICY_NAME="jitsi-policy"
 USER_NAME="jitsi-user"
 EC2_KEY_NAME="jitsi-ec2-key"
+OUTPUT_DIR="output"
 
 echo "Creating IAM resources..."
+
+# Create output dir if not exists
+if [ ! -d "$OUTPUT_DIR" ]; then
+    mkdir -p "$OUTPUT_DIR"
+fi
+
 
 aws iam create-policy \
   --policy-name "$POLICY_NAME" \
