@@ -9,7 +9,7 @@ LAUNCH_TEMPLATE_NAME="jitsi-launch-template"
 
 # Params for EC2 setup
 EC2_USER_DATA_SCRIPT="resources/jitsi_setup.sh"
-EC2_AMI="EC2_AMI-0faab6bdbac9486fb"  # Ubuntu in eu-central-1
+EC2_AMI="ami-0faab6bdbac9486fb"  # Ubuntu in eu-central-1
 EC2_INSTANCE_TYPE="t2.micro"   # Free tier, adjust to your needs
 EC2_KEY_NAME="jitsi-ec2-key"
 
