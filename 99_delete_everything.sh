@@ -59,8 +59,8 @@ echo "Launch Template deleted."
 # Delete VPC only after no more ec2 instances are running
 while [ "$(aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,State.Name]' --output text)" != "" ]
 do
-  echo "waiting another 10 seconds for ec2 instances to shut down..."
-  sleep 10
+  echo "waiting another 30 seconds for ec2 instances to shut down..."
+  sleep 30
 done
 
 # Delete VPC
