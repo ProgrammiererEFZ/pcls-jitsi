@@ -59,14 +59,14 @@ Abschliessend muss noch der DNS CNAME manuell beim Provider angepasst werden.
    - ✅ Beschreibung der Implementierung: Wie haben Sie was umgesetzt und warum?
    - ✅ 10-15 Seiten
 
-5. TODO: Stellen Sie Ihren Use Case in der Veranstaltung vor:
-   - Zeitrahmen: 10min + 5min Fragen pro Gruppe
-   - Sourcecode und Demo > PPT
+5. Stellen Sie Ihren Use Case in der Veranstaltung vor:
+   - ✅ Zeitrahmen: 10min + 5min Fragen pro Gruppe
+   - ✅ Sourcecode und Demo > PPT
 
 ## Lieferobjekte
 - ✅ Technischer Bericht
 - ✅ Sourcecode / Dokumentation zum Aufsetzen des Services (README)
-- TODO: Vorstellung der laufenden Implementierung im Plenum
+- ✅ Vorstellung der laufenden Implementierung im Plenum
 
 ### Beispielstruktur des technischen Berichts
 - ✅ Beschreibung Use Case
