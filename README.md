@@ -19,6 +19,9 @@ Das ganze wird auf AWS (Amazon Web Services) deployt und folgende Komponente wer
 - Certificate mit ACM
 - Monitoring mit SNS und CloudWatch
 
+## Architektur
+![Architektur Diagramm](docs/architecture.png)
+
 ## Installation
 
 Die Installation setzt voraus, dass folgende Tools installiert sind:
